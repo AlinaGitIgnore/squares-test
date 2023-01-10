@@ -15,7 +15,7 @@ const HoverSquares: React.FC<IProps> = ({ squares }) => {
         {squares.map((square, idx) => (
           <li key={idx} className={styled.item}>
             <span>
-              Row {square.row} Col {square.col}
+              Row {square.row + 1} Col {square.col + 1}
             </span>
           </li>
         ))}

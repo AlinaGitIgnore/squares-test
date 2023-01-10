@@ -1,44 +1,20 @@
-import React, { useRef } from "react";
-import { SquareType } from "../../App";
+import React from "react";
 
 import styled from "./index.module.scss";
 
 interface IProps {
   row: number;
   col: number;
-  setSquares: Function;
+  isActive: boolean;
+  toggleSelection: (row: number, col: number) => void;
 }
 
-const Cell: React.FC<IProps> = ({ row, col, setSquares }) => {
-  const refCell = useRef<HTMLTableCellElement>(null);
-
-  const addSquare = (row: number, col: number) => {
-    setSquares((prev: SquareType[]) => [...prev, { row, col }]);
-  };
-  const removeSquare = (row: number, col: number) => {
-    setSquares((prev: SquareType[]) =>
-      prev.filter((square) => JSON.stringify(square) !== JSON.stringify({ row, col }))
-    );
-  };
-
-  const handleBoxToggle = () => {
-    const cell = refCell.current!;
-    const color = cell.style.backgroundColor;
-    if (color === "white") {
-      cell.style.backgroundColor = "lightBlue";
-      addSquare(row, col);
-    } else {
-      cell.style.backgroundColor = "white";
-      removeSquare(row, col);
-    }
-  };
-
+const Cell: React.FC<IProps> = ({ row, col, isActive, toggleSelection }) => {
   return (
     <td
-      ref={refCell}
       className={styled.col}
-      style={{ backgroundColor: "white" }}
-      onMouseEnter={handleBoxToggle}
+      style={!isActive ? { backgroundColor: "white" } : { backgroundColor: "lightBlue" }}
+      onMouseEnter={() => toggleSelection(row, col)}
     ></td>
   );
 };

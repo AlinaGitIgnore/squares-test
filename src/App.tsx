@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 
 import "./App.css";
 import HoverSquares from "./components/HoverSquares";
