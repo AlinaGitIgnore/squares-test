@@ -1,0 +1,9 @@
+.table {
+  display: table;
+  width: max-content;
+  border-collapse: collapse;
+
+  .row {
+    border-collapse: collapse;
+  }
+}
