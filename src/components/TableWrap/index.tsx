@@ -6,7 +6,7 @@ import { DataItemType, SquareType } from "../../types/types";
 import styled from "./index.module.scss";
 
 interface IProps {
-  setSquares: Function;
+  setSquares: React.Dispatch<React.SetStateAction<SquareType[]>>;
 }
 
 const TableWrap: React.FC<IProps> = ({ setSquares }) => {
@@ -23,6 +23,7 @@ const TableWrap: React.FC<IProps> = ({ setSquares }) => {
   useEffect(() => {
     takeSettings();
   }, []);
+
   const handleChangeTable = (e: { target: { value: React.SetStateAction<string> } }) => {
     setSelectedName(e.target.value);
   };
