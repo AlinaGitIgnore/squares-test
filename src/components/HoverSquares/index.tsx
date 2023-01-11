@@ -1,6 +1,5 @@
 import React from "react";
-import { SquareType } from "../../App";
-
+import { SquareType } from "../../types/types";
 import styled from "./index.module.scss";
 
 interface IProps {

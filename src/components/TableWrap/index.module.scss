@@ -9,15 +9,23 @@
     .select {
       height: 100%;
       width: 145px;
+      cursor: pointer;
     }
     .button {
       background-color: #0275d8;
       width: 70px;
       height: 100%;
-
+      color: white;
+      text-transform: uppercase;
       border-radius: 8px;
       border: 0;
       margin-left: 20px;
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        background-color: blue;
+      }
     }
   }
 }

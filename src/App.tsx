@@ -1,19 +1,8 @@
 import { useState } from "react";
-
-import "./App.css";
 import HoverSquares from "./components/HoverSquares";
-
-import styled from "./App.module.scss";
 import TableWrap from "./components/TableWrap";
-export interface DataItem {
-  name: "Easy" | "Normal" | "Hard";
-  field: number;
-}
-
-export interface SquareType {
-  row: number;
-  col: number;
-}
+import { SquareType } from "./types/types";
+import styled from "./App.module.scss";
 
 function App() {
   const [squares, setSquares] = useState<SquareType[]>([]);

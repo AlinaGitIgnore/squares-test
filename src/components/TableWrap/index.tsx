@@ -1,32 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { getData } from "../../api/getData";
-import { DataItem, SquareType } from "../../App";
 import Table from "../Table";
+import { createTable } from "../../utils/createTable";
+import { DataItemType, SquareType } from "../../types/types";
 import styled from "./index.module.scss";
 
 interface IProps {
   setSquares: Function;
 }
 
-const createTable = (size: number) => {
-  const table = [];
-  for (let i = 0; i < size; i++) {
-    const part = [];
-    for (let j = 0; j < size; j++) {
-      part.push(false);
-    }
-    table.push(part);
-  }
-  return table;
-};
-
 const TableWrap: React.FC<IProps> = ({ setSquares }) => {
-  const [data, setData] = useState<DataItem[]>([]);
+  const [data, setData] = useState<DataItemType[]>([]);
   const [selectedName, setSelectedName] = useState("Easy");
   const [table, setTable] = useState<boolean[][]>(createTable(5));
 
   const takeSettings = async () => {
-    const data: DataItem[] = await getData();
+    const data: DataItemType[] = await getData();
     setData(data);
     return data;
   };
@@ -48,10 +37,10 @@ const TableWrap: React.FC<IProps> = ({ setSquares }) => {
     const newArr = [...table];
     newArr[row][col] = !newArr[row][col];
     if (newArr[row][col]) {
-      setSquares((prev: any) => [...prev, { row, col }]);
+      setSquares((prev: SquareType[]) => [...prev, { row, col }]);
     } else {
-      setSquares((prev: any) =>
-        prev.filter((item: any) => !(item.row === row && item.col === col))
+      setSquares((prev: SquareType[]) =>
+        prev.filter((item: SquareType) => !(item.row === row && item.col === col))
       );
     }
     setTable(newArr);
